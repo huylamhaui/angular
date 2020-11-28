@@ -12,4 +12,10 @@ RUN npm run build --prod
 
 
 FROM nginx:1.17.1-alpine
-COPY --from=build-step /opt/source/dist /usr/share/nginx/html
+
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
+
+COPY --from=build-step /opt/source/dist .
+
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
