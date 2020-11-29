@@ -1,1 +1,4 @@
-<p>category-type-page works!</p>
+<app-category-type-table 
+    [categoryTypeList]="categoryTypeList$|async"
+    [isLoading]="isLoading$|async">
+</app-category-type-table>

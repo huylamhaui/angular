@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { adminReducer } from './admin.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { adminEffect } from './admin.effect';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { adminEffect } from './admin.effect';
   imports: [
     CommonModule,
     AdminRoutingModule,
+    SharedModule,
     StoreModule.forFeature('adminStore', adminReducer),
     EffectsModule.forFeature(adminEffect)
   ]

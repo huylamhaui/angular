@@ -1,0 +1,20 @@
+<form [formGroup]="form">
+    <p>
+        <mat-form-field [appearance]="'outline'">
+            <mat-label>Code</mat-label>
+            <input matInput formControlName="code" />
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field [appearance]="'outline'">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" />
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field [appearance]="'outline'">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+    </p>
+</form>

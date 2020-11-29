@@ -6,12 +6,12 @@ export const getListCategoryType = createSelector(
     state => state.listCategoryType
 );
 
-const getIsLoading = createSelector(
+export const getIsLoading = createSelector(
     getCategorySelector,
     state => state.isLoading
 );
 
-const getError = createSelector(
+export const getError = createSelector(
     getCategorySelector,
     state => state.error
 );
