@@ -14,4 +14,8 @@ export class CategoryService {
   getListCategoryType(filter: any): Observable<CategoryType[]> {
     return this.http.get<CategoryType[]>('/api/categories');
   }
+
+  createCategoryType(payload: any): Observable<CategoryType> {
+    return this.http.post<CategoryType>('/api/categories/create', payload);
+  }
 }

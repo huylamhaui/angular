@@ -15,3 +15,10 @@ export const getError = createSelector(
     getCategorySelector,
     state => state.error
 );
+
+export const getIsSaving = createSelector(
+    getCategorySelector,
+    state => state.isSaving
+);
+
+

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -11,11 +11,14 @@ export class CategoryTypeFormComponent implements OnInit {
   form: FormGroup;
   readonly FORM_ARRAY_NAME = 'categories';
 
+  @Input() isSaving: boolean;
+  @Output() submitForm = new EventEmitter<any>();
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.initForm();
-    this.addLine();
+    // this.addLine();
   }
 
   initForm(): void {
@@ -23,7 +26,7 @@ export class CategoryTypeFormComponent implements OnInit {
       code: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
       description: new FormControl(''),
-      [this.FORM_ARRAY_NAME]: this.formBuilder.array([], Validators.required)
+      [this.FORM_ARRAY_NAME]: this.formBuilder.array([])
     });
   }
 
@@ -40,4 +43,13 @@ export class CategoryTypeFormComponent implements OnInit {
     this.getLines().push(newLine);
   }
 
+
+  onSubmit(): void {
+    const { invalid, value } = this.form;
+    if (invalid) {
+      alert('form not valid');
+      return;
+    }
+    this.submitForm.emit(value);
+  }
 }

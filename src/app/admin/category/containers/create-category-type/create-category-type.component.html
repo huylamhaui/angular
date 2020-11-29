@@ -1,3 +1,5 @@
 <p>create-category-type works!</p>
-<app-category-type-form>
+<app-category-type-form 
+    [isSaving]="isSaving$|async"
+    (submitForm)="onSubmitForm($event)">
 </app-category-type-form>
