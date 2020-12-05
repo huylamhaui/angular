@@ -54,13 +54,8 @@ export class MenusComponent implements OnInit {
   }
 
 
-  pageChange($event: PageEvent): void {
-    const { pageIndex, pageSize } = $event;
-    const query = {
-      pageSize,
-      pageNumber: pageIndex
-    };
-    this.getPage(query);
+  pageChange($event): void {
+    this.getPage($event);
   }
 
 }

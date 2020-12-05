@@ -31,4 +31,11 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr [ngClass]="rowClass(row.id)" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+  <mat-paginator
+    [length]="pagination.totalElements"
+    [pageSize]="pagination.pageable.pageSize"
+    [pageIndex]="pagination.pageable.pageNumber"
+    (page)="pageChange($event)">
+  </mat-paginator>
 </div>

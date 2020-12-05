@@ -93,6 +93,10 @@ const reducer = createReducer(
                 ...state,
                 isSaving: false,
                 menus: newMenus,
+                page: {
+                    ...state.page,
+                    totalElements: state.page.totalElements + 1
+                },
                 lastAdded: response.payload.id
             };
         }

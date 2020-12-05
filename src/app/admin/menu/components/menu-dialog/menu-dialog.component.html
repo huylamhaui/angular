@@ -1,9 +1,8 @@
 <h1 mat-dialog-title>Create Menu</h1>
 
-{{isSaving$|async|json}}
 
 <mat-dialog-content>
-    {{getErrorMessage(error$|async)}}
+    <span class="error">{{getErrorMessage(error$|async)}}</span>
     <form id="form" [formGroup]="form" (ngSubmit)="submitForm()">
         <p>
             <mat-form-field>

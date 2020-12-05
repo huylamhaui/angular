@@ -7,12 +7,7 @@
 <app-menu-table
     [menus]="menus$|async"
     [lastAdded]="lastAdded$|async"
-    [isLoading]="isLoading$|async">
+    [isLoading]="isLoading$|async"
+    [pagination]="pagination$|async"
+    (changePage)="pageChange($event)">
 </app-menu-table>
-
-<mat-paginator *ngIf="(pagination$|async) as pagination"
-    [length]="pagination.totalElements"
-    [pageSize]="pagination.pageable.pageSize"
-    [pageIndex]="pagination.pageable.pageNumber"
-    (page)="pageChange($event)">
-</mat-paginator>

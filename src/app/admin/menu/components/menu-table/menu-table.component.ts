@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
+import { Page } from 'src/app/shared/models/api.model';
 import { Menu } from '../../menu.model';
 
 
@@ -12,6 +14,9 @@ export class MenuTableComponent implements OnInit {
   @Input() isLoading: boolean;
   @Input() menus: Menu[];
   @Input() lastAdded: string;
+  @Input() pagination: Page<any>;
+
+  @Output() changePage = new EventEmitter<any>();
 
   displayedColumns: string[];
 
@@ -19,6 +24,15 @@ export class MenuTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.displayedColumns = ['id', 'name', 'description'];
+  }
+
+  pageChange($event: PageEvent): void {
+    const { pageIndex, pageSize } = $event;
+    const query = {
+      pageSize,
+      pageNumber: pageIndex
+    };
+    this.changePage.emit(query);
   }
 
 
