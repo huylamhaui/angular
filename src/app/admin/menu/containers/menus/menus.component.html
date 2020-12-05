@@ -1,0 +1,18 @@
+<h1 class="animate__animated animate__bounce">Menu container</h1>
+
+<mat-action-row>
+    <button mat-raised-button color="primary" (click)="openCreateDialog()">add</button>
+</mat-action-row>
+
+<app-menu-table
+    [menus]="menus$|async"
+    [lastAdded]="lastAdded$|async"
+    [isLoading]="isLoading$|async">
+</app-menu-table>
+
+<mat-paginator *ngIf="(pagination$|async) as pagination"
+    [length]="pagination.totalElements"
+    [pageSize]="pagination.pageable.pageSize"
+    [pageIndex]="pagination.pageable.pageNumber"
+    (page)="pageChange($event)">
+</mat-paginator>

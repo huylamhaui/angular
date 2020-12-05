@@ -1,0 +1,34 @@
+<h1 mat-dialog-title>Create Menu</h1>
+
+{{isSaving$|async|json}}
+
+<mat-dialog-content>
+    {{getErrorMessage(error$|async)}}
+    <form id="form" [formGroup]="form" (ngSubmit)="submitForm()">
+        <p>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input type="text" matInput formControlName="name">
+            </mat-form-field>
+        </p>
+
+
+        <p>
+            <mat-form-field>
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+        </p>
+    </form>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" form="form" [disabled]="isSaving$|async">
+        OK
+        <mat-icon *ngIf="isSaving$|async">
+            <mat-spinner color="warn" [diameter]="20"></mat-spinner>
+        </mat-icon>
+    </button>
+    <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
+</mat-dialog-actions>

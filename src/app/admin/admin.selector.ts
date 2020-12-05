@@ -7,3 +7,10 @@ export const getCategorySelector = createSelector(
     adminSelector,
     state => state.categoryState
 );
+
+
+export const getMenuState = createSelector(
+    adminSelector,
+    state => state.menuState
+);
+
