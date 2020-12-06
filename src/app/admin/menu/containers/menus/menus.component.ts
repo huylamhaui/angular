@@ -50,7 +50,11 @@ export class MenusComponent implements OnInit {
   }
 
   getPage(payload: any): void {
-    this.store.dispatch(getMenuPage({ query: payload }));
+    const query = {
+      ...payload,
+      sort: 'createdDate desc'
+    };
+    this.store.dispatch(getMenuPage({ query }));
   }
 
 

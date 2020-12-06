@@ -23,7 +23,7 @@ export class MenuTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.displayedColumns = ['id', 'name', 'description'];
+    this.displayedColumns = ['id', 'name', 'description', 'createdDate', 'createdBy', 'updatedDate', 'updatedBy'];
   }
 
   pageChange($event: PageEvent): void {
