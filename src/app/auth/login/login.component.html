@@ -1,0 +1,34 @@
+<div class="login">
+    <mat-card>
+        <h1 mat-card-title>Login</h1>
+        <p>
+            <span class="error" *ngIf="error$|async as error">{{error.message}}</span>
+        </p>
+
+        <form [formGroup]="form" autocomplete="off" (ngSubmit)="login()">
+            <mat-card-content>
+                <p>
+                    <mat-form-field>
+                        <mat-label>Username</mat-label>
+                        <input type="text" matInput formControlName="username">
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput formControlName="password">
+                    </mat-form-field>
+                </p>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button type="submit" mat-raised-button color="primary">
+                    Login
+                    <mat-icon *ngIf="isLoggingIn$|async">
+                        <mat-spinner [diameter]="20" color="warn"></mat-spinner>
+                    </mat-icon>
+                </button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>
